@@ -172,7 +172,7 @@ public class CPagenHapus extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Berhasil menghapus Contact Person Agen "+nama.getText(), "Hapus", JOptionPane.PLAIN_MESSAGE);
             nama.setText("");
         }
-        else JOptionPane.showMessageDialog(null,"Gagal di hapus, silakan coba kembali! \nNama Agen tidak boleh kosong","Hapus" , JOptionPane.WARNING_MESSAGE);
+        else JOptionPane.showMessageDialog(null,"Gagal di hapus, silakan coba kembali! \nNama Agen tidak boleh kosong","Hapus" , JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_hapusActionPerformed
 
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed

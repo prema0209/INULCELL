@@ -31,6 +31,9 @@ public class CpControl {
         
     }
     
+    /*  Yang penting User telah memasukkan apa pun di text nama
+        Apabila User tidak memasukkan nama ("") -> false
+    */
     public boolean hapus(String nama){
         return !"".equals(nama);
     } 

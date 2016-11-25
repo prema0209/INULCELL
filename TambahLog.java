@@ -170,17 +170,24 @@ public class TambahLog extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
-        control=new ControlLog();
-        
-        String noHp=txtNoHp.getText();
-        String Provider=(cbProvider).toString();
-        String Nominal=(cbJumlah.getSelectedItem()).toString();
-        
-        boolean tambah=control.tambahLog(noHp, Provider, Nominal);
+         control=new ControlLog();
         
         
-        if(tambah)JOptionPane.showMessageDialog(null,"berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
-        else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
+        if((txtNoHp.getText()).equals("")){
+            JOptionPane.showMessageDialog(null,"No Hp Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            String noHp=txtNoHp.getText();
+             String Provider=(cbProvider).toString();
+             String Nominal=(cbJumlah.getSelectedItem()).toString();
+        
+             boolean tambah=control.tambahLog(noHp, Provider, Nominal);
+        
+        
+            if(tambah)JOptionPane.showMessageDialog(null,"berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
+            else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
+        
+        }
     }//GEN-LAST:event_tambahActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

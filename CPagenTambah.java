@@ -207,7 +207,7 @@ public class CPagenTambah extends javax.swing.JFrame {
             nama.setText("");
             nohp.setText("");
         }
-        else JOptionPane.showMessageDialog(null,"Gagal di tambahkan, silakan coba kembali! \nCheck apakah nama agen telah diisi","Tambah" , JOptionPane.WARNING_MESSAGE);
+        else JOptionPane.showMessageDialog(null,"Gagal di tambahkan, silakan coba kembali! \nNama Agen tidak boleh kosong","Tambah" , JOptionPane.WARNING_MESSAGE);;
     }//GEN-LAST:event_tambahActionPerformed
 
     private void nohpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nohpActionPerformed

@@ -177,7 +177,7 @@ public class TambahLog extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"No Hp Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
             }
             else{
-                if(((txtNoHp.getText()).substring(0,1)).equals("0") && ((txtNoHp.getText()).substring(0,2)).equals("62") ){
+                if(((txtNoHp.getText()).substring(0,1)).equals("0") || ((txtNoHp.getText()).substring(0,2)).equals("62") ){
                     
                     int tes=Integer.parseInt(txtNoHp.getText());
 

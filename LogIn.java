@@ -7,24 +7,26 @@
 package login;
 import menuawal.MenuAwal;
 
-
+/**
+ *
+ * @author UsuiTakumi
+ */
 public class LogIn {
     
-    private LogInDB data;
-  //  private boolean hasil;
+   
+ 
     private MenuAwal menu;
     
     public LogIn(){
-        data = new LogInDB();
+     
         menu = new MenuAwal();
     }
     
     public void newUser(String user, String pass){
-        data.setUser(user);
-        data.setPass(pass);
+      
     }
     
     public boolean login(String user, String password){
-        return data.CekUserPass(user, password);
+       return true;
     }
 }

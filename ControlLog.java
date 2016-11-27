@@ -11,11 +11,10 @@ package logtransaksi;
  * @author prema
  */
 public class ControlLog {
-    LogDataBase database;
+    
     
     public ControlLog(){
         
-        database=new LogDataBase();
         
     }
 

@@ -149,7 +149,7 @@ public class HapusLog extends javax.swing.JFrame {
         
         
         if((txtHapus.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"No Hp Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"ID Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
         }
         else {
             boolean hapuslog=control.hapusLog(a);

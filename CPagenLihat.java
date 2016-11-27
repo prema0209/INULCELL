@@ -20,30 +20,17 @@ public class CPagenLihat extends javax.swing.JFrame {
     private CPagenDB data;
     private MenuCPagen menu;
     private CpControl control;
-    private int indexAwal;
-    private int indexAkhir;
+ //   private int indexAwal;
+ //   private int indexAkhir;
     
     /**
      * Creates new form CPAgenLihat
      */
     public CPagenLihat() {
         initComponents();
-        this.indexAwal = 1;
-        this.indexAkhir = 5;
+  //      this.indexAwal = 1;
+  //      this.indexAkhir = 5;
     }
-
-    /*
-    private void updateTable(){
-        Object datatabel[][] = new Object[this.list.size()][2];
-        int x = 0;
-        for(CPagenDB cpa : this.list) {
-            datatabel[x][0] = cpa.getNama();
-            datatabel[x][1] = cpa.getNohp();
-            ++x;
-        }
-        tabelCPAgen.setModel(new DefaultTableModel(datatabel, title));
-    }
-    */
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -218,9 +205,4 @@ public class CPagenLihat extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable tabelCPAgen;
     // End of variables declaration//GEN-END:variables
-    
-    private void close() {
-         WindowEvent winClosing = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosing);
-    }
 }

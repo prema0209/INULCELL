@@ -12,12 +12,13 @@ package saldo;
  */
 public class Saldo {
     
-  
     
     public Saldo(){
         
     }
     
+    /*  apabila melakukan tambah(integer), maka return true
+        apabila bukan integer, maka retrun false */
     public boolean tambah(int saldo){
         return true;
     }

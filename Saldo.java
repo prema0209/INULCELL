@@ -12,10 +12,10 @@ package saldo;
  */
 public class Saldo {
     
-    private SaldoDB jumlahsaldo;
+  
     
     public Saldo(){
-        jumlahsaldo = new SaldoDB();
+        
     }
     
     public boolean tambah(int saldo){

@@ -136,20 +136,17 @@ public class TambahSaldoUI extends javax.swing.JFrame {
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {                                       
        
-        if((txtNominal.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"Saldo Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
+       data = new Saldo();
+      
+        try{
+            int nominal = Integer.parseInt(txtNominal.getText());
+            boolean tambah = data.tambah(nominal);
+            if(tambah)JOptionPane.showMessageDialog(null,"Saldo berhasil di tambahkan", "Tambah", JOptionPane.PLAIN_MESSAGE);
+            else JOptionPane.showMessageDialog(null,"Saldo gagal di tambahkan, silakan coba kembali! \nSaldo tidak boleh kosong","Tambah" , JOptionPane.PLAIN_MESSAGE);
+        } catch(NumberFormatException e) {
+            if(txtNominal.getText().equals("")) JOptionPane.showMessageDialog(null,"Saldo gagal di tambahkan, silakan coba kembali! \nSaldo tidak boleh kosong","Tambah" , JOptionPane.ERROR_MESSAGE);
+            else JOptionPane.showMessageDialog(null,"Saldo gagal di tambahkan, silakan coba kembali! \nSaldo harus berupa angka", "Tambah", JOptionPane.ERROR_MESSAGE);
         }
-        else {
-        data = new Saldo();
-        
-        
-        
-        int nominal = Integer.parseInt(txtNominal.getText());
-        
-        boolean tambah = data.tambah(nominal);
-        
-        if(tambah)JOptionPane.showMessageDialog(null,"Saldo berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
-        else JOptionPane.showMessageDialog(null,"Saldo gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
     }                                      
     }
     /**

@@ -261,9 +261,4 @@ public class CPagenTambah extends javax.swing.JFrame {
     private javax.swing.JTextField nohp;
     private javax.swing.JButton tambah;
     // End of variables declaration//GEN-END:variables
-
-    private void close() {
-         WindowEvent winClosing = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosing);
-    }
 }

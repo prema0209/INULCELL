@@ -145,18 +145,24 @@ public class HapusLog extends javax.swing.JFrame {
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {                                      
         control=new ControlLog();
-        String a = txtHapus.getText();
         
-        
-        if((txtHapus.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"ID Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
+        try{
+            if((txtHapus.getText()).equals("")){
+                JOptionPane.showMessageDialog(null,"ID Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
+            }
+            else if(Integer.parseInt(txtHapus.getText())<0){
+                JOptionPane.showMessageDialog(null,"ID HARUS BILANGAN POSITIF", "tambah", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                boolean hapuslog=control.hapusLog(txtHapus.getText());
+
+                if(hapuslog)JOptionPane.showMessageDialog(null,"Log Berhasil di hapus", "Hapus", JOptionPane.PLAIN_MESSAGE);
+                else JOptionPane.showMessageDialog(null,"Log Gagal di hapus, silakan coba kembali","Hapus" , JOptionPane.PLAIN_MESSAGE);
+            }    
         }
-        else {
-            boolean hapuslog=control.hapusLog(a);
-        
-            if(hapuslog)JOptionPane.showMessageDialog(null,"Log Berhasil di hapus", "Hapus", JOptionPane.PLAIN_MESSAGE);
-            else JOptionPane.showMessageDialog(null,"Log Gagal di hapus, silakan coba kembali","Hapus" , JOptionPane.PLAIN_MESSAGE);
-        }    
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Id salah", "Hapus", JOptionPane.ERROR_MESSAGE);
+        }
     }                                     
 
     /**

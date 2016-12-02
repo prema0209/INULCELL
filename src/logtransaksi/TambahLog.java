@@ -197,21 +197,22 @@ public class TambahLog extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"No Hp Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
             }
             else{
-                if(((txtNoHp.getText()).substring(0,1)).equals("0") || ((txtNoHp.getText()).substring(0,2)).equals("62") ){
-                    
-                    long tes=Long.parseLong(txtNoHp.getText());
+                if((txtNoHp.getText()).length()>9){
+                    if(((txtNoHp.getText()).substring(0,1)).equals("0") || ((txtNoHp.getText()).substring(0,2)).equals("62") ){
 
-                    String noHp=txtNoHp.getText();
-                    String Provider=(cbProvider).toString();
-                    String Nominal=(cbJumlah.getSelectedItem()).toString();
+                        long tes=Long.parseLong(txtNoHp.getText());
 
-                    boolean tambah=control.tambahLog(noHp, Provider, Nominal);
-                    
+                        String noHp=txtNoHp.getText();
+                        String Provider=(cbProvider).toString();
+                        String Nominal=(cbJumlah.getSelectedItem()).toString();
 
-                   if(tambah)JOptionPane.showMessageDialog(null,"berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
-                   else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
+                        boolean tambah=control.tambahLog(noHp, Provider, Nominal);
+
+
+                       if(tambah)JOptionPane.showMessageDialog(null,"berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
+                       else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
+                    }
                 }
-                
                 else{
                     JOptionPane.showMessageDialog(null,"No Hp salah", "tambah", JOptionPane.ERROR_MESSAGE);
                 }

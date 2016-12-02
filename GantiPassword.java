@@ -58,8 +58,8 @@ public class GantiPassword extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Password  :");
 
-        newuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        newuser.addActionListener(new java.awt.event.ActionListener() {
+        txtUserLama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUserLama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newuserActionPerformed(evt);
             }
@@ -80,6 +80,18 @@ public class GantiPassword extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
+        
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Username Baru : ");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Password Baru : ");
+        
+        txtPassBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassBaruActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +103,7 @@ public class GantiPassword extends javax.swing.JFrame {
                         .addGap(95, 95, 95)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))

@@ -6,6 +6,7 @@
 
 package rekapdata;
 
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,13 +29,23 @@ public class RekapBulanan extends javax.swing.JFrame {
 
     private void updateTable(){
         control=new RekapControl();
-        Object[][] data = new Object[4][4];
+        Object[][] data = new Object[4][12];
         
         for(int i=0;i<4;i++){
             data[i][0]=i+1;
             data[i][1]=control.Bulanan(i+1, 2);
             data[i][2]=control.Bulanan(i+1, 3);
             data[i][3]=control.Bulanan(i+1, 4);
+            data[i][4]=control.Bulanan(i+1, 5);
+            data[i][5]=control.Bulanan(i+1, 6);
+            data[i][6]=control.Bulanan(i+1, 7);
+            data[i][7]=control.Bulanan(i+1, 8);
+            data[i][8]=control.Bulanan(i+1, 9);
+            data[i][9]=control.Bulanan(i+1, 10);
+            data[i][10]=control.Bulanan(i+1, 11);
+            data[i][11]=control.Bulanan(i+1, 12);
+            
+               
             
         }
         
@@ -69,6 +80,14 @@ public class RekapBulanan extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -91,24 +110,24 @@ public class RekapBulanan extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Back)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Back))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)))
+                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(Back)
                 .addContainerGap())
         );
@@ -135,6 +154,7 @@ public class RekapBulanan extends javax.swing.JFrame {
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         menu=new RekapDataPenjualanUI();
+        menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackActionPerformed

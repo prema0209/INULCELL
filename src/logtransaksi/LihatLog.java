@@ -52,6 +52,7 @@ public class LihatLog extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         jLabel1.setText("Lihat Log Transaksi");
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -89,6 +90,8 @@ public class LihatLog extends javax.swing.JFrame {
                 "ID", "Tanggal", "No. HP", "Provider", "Nominal"
             }
         ));
+        jTable1.setToolTipText("");
+        jTable1.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(jTable1);
 
         back.setText("< Back");

@@ -6,6 +6,7 @@
 
 package logtransaksi;
 
+import javax.swing.JFrame;
 import menuawal.MenuAwal;
 
 /**
@@ -163,24 +164,28 @@ public class LogTransaksi extends javax.swing.JFrame {
 
     private void HapusLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusLogActionPerformed
         hapus=new HapusLog();
+        hapus.setExtendedState(JFrame.MAXIMIZED_BOTH);
         hapus.setVisible(true);
         dispose();
     }//GEN-LAST:event_HapusLogActionPerformed
 
     private void TambahLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahLogActionPerformed
         tambah = new TambahLog();
+        tambah.setExtendedState(JFrame.MAXIMIZED_BOTH);
         tambah.setVisible(true);
         dispose();
     }//GEN-LAST:event_TambahLogActionPerformed
 
     private void LihatLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LihatLogActionPerformed
         lihat=new LihatLog();
+        lihat.setExtendedState(JFrame.MAXIMIZED_BOTH);
         lihat.setVisible(true);
         dispose();
     }//GEN-LAST:event_LihatLogActionPerformed
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         Menu=new MenuAwal();
+        Menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackActionPerformed
@@ -216,6 +221,7 @@ public class LogTransaksi extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogTransaksi().setVisible(true);
+               
             }
         });
     }

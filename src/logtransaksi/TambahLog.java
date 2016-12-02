@@ -6,6 +6,7 @@
 
 package logtransaksi;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class TambahLog extends javax.swing.JFrame {
     
     public TambahLog() {
         initComponents();
+        
     }
 
     /**
@@ -222,6 +224,7 @@ public class TambahLog extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         MenuLog=new LogTransaksi();
+        MenuLog.setExtendedState(JFrame.MAXIMIZED_BOTH);
         MenuLog.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
@@ -260,7 +263,7 @@ public class TambahLog extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TambahLog().setVisible(true);
+               new TambahLog().setVisible(true);
             }
         });
     }

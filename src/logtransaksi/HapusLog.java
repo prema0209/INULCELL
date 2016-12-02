@@ -111,11 +111,11 @@ public class HapusLog extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, Short.MAX_VALUE)
                 .addGap(104, 104, 104)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHapus)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addComponent(txtHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62)
                 .addComponent(Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(132, 132, 132)
@@ -145,6 +145,7 @@ public class HapusLog extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         MenuLog = new LogTransaksi();
+        MenuLog.setExtendedState(JFrame.MAXIMIZED_BOTH);
         MenuLog.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
@@ -205,9 +206,7 @@ public class HapusLog extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               HapusLog hapus=new HapusLog();
-               hapus.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            hapus.setVisible(true);
+              new HapusLog().setVisible(true);
             }
         });
     }

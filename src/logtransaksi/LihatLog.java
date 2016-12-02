@@ -164,6 +164,7 @@ public class LihatLog extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         menuLog=new LogTransaksi();
+        menuLog.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menuLog.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
@@ -208,9 +209,7 @@ public class LihatLog extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LihatLog lihat=new LihatLog();
-                lihat.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                lihat.setVisible(true);
+               new LihatLog().setVisible(true);
             }
         });
     }

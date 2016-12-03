@@ -53,19 +53,17 @@ public class GantiPassword extends javax.swing.JFrame {
         jLabel1.setText("Ganti Password");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Username : ");
+        jLabel2.setText("Username Lama :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Password  :");
+        jLabel3.setText("Password Lama :");
 
-        newuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        newuser.addActionListener(new java.awt.event.ActionListener() {
+        txtUserLama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUserLama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newuserActionPerformed(evt);
+                txtUserLamaActionPerformed(evt);
             }
         });
-
-        newpass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         ganti.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ganti.setText("Ganti");
@@ -83,6 +81,18 @@ public class GantiPassword extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Username Baru : ");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Password Baru : ");
+        
+        txtPassBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassBaruActionPerformed(evt);
+            }
+        });
+        
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

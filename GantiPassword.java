@@ -35,11 +35,15 @@ public class GantiPassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        newuser = new javax.swing.JTextField();
-        newpass = new javax.swing.JTextField();
+        txtUserLama = new javax.swing.JTextField();
         ganti = new javax.swing.JButton();
         back = new javax.swing.JButton();
-
+        txtPassLama = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtUserBaru = new javax.swing.JTextField();
+        txtPassBaru = new javax.swing.JTextField();
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

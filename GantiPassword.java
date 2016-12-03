@@ -186,32 +186,29 @@ public class GantiPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void newuserActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void txtUserLamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserLamaActionPerformed
         // TODO add your handling code here:
-    }                                       
+    }//GEN-LAST:event_txtUserLamaActionPerformed                                   
 
-    private void gantiActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        if((newuser.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"User Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
-        else if((newpass.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"Pass Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-        String user = newuser.getText();
-        String pass = newpass.getText();
+    private void gantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gantiActionPerformed
+        String user = txtUserLama.getText();
+        String pass = txtPassLama.getText();
         
-        control.newUser(user, pass);
+        //control.newUser(user, pass);
         
         JOptionPane.showMessageDialog(null,"Berhasil di ganti", "Ganti Username & Password", JOptionPane.PLAIN_MESSAGE);
-    }                                     
-    }
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
+    }//GEN-LAST:event_gantiActionPerformed
+    
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         menu = new MenuAwal();
         menu.setVisible(true);
         dispose();
-    }                                    
-
+    }//GEN-LAST:event_backActionPerformed
+    
+    private void txtPassBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassBaruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassBaruActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -253,8 +250,12 @@ public class GantiPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField newpass;
-    private javax.swing.JTextField newuser;
+    private javax.swing.JTextField txtPassBaru;
+    private javax.swing.JPasswordField txtPassLama;
+    private javax.swing.JTextField txtUserBaru;
+    private javax.swing.JTextField txtUserLama;
     // End of variables declaration                   
 }

@@ -11,9 +11,10 @@ package saldo;
  * @author UsuiTakumi
  */
 public class SaldoDB {
+    private int nominal;
     
-    public SaldoDB(){
-        
+    public SaldoDB(int nominal){
+        this.nominal = nominal;
     }
     
     public void connectDB(){
@@ -26,6 +27,20 @@ public class SaldoDB {
     
     public void lihat(){
         
+    }
+
+    /**
+     * @return the nominal
+     */
+    public int getNominal() {
+        return nominal;
+    }
+
+    /**
+     * @param nominal the nominal to set
+     */
+    public void setNominal(int nominal) {
+        this.nominal = nominal;
     }
     
 }

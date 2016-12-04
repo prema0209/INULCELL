@@ -9,10 +9,7 @@ package login;
 import javax.swing.JOptionPane;
 import menuawal.MenuAwal;
 
-/**
- *
- * @author UsuiTakumi
- */
+
 public class GantiPassword extends javax.swing.JFrame {
 
     /**
@@ -38,11 +35,15 @@ public class GantiPassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        newuser = new javax.swing.JTextField();
-        newpass = new javax.swing.JTextField();
+        txtUserLama = new javax.swing.JTextField();
         ganti = new javax.swing.JButton();
         back = new javax.swing.JButton();
-
+        txtPassLama = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtUserBaru = new javax.swing.JTextField();
+        txtPassBaru = new javax.swing.JTextField();
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -52,15 +53,15 @@ public class GantiPassword extends javax.swing.JFrame {
         jLabel1.setText("Ganti Password");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Username : ");
+        jLabel2.setText("Username Lama :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Password  :");
+        jLabel3.setText("Password Lama :");
 
-        newuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        newuser.addActionListener(new java.awt.event.ActionListener() {
+        txtUserLama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUserLama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newuserActionPerformed(evt);
+                txtUserLamaActionPerformed(evt);
             }
         });
 

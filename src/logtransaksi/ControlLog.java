@@ -39,15 +39,26 @@ public class ControlLog {
         }
     }
     public boolean tambahLog(String NoHp, String Provider, String nominal){
-        System.out.print(Provider);
+        
+        
+        
         String sql="Insert Into logtransaksi (NoHp, provider, jumlah) Values"
                 +"('"+NoHp+"',"
                 + "'"+Provider+"',"
                 + "'"+nominal+"')";
         
-        db.tambahLog(sql, nominal);
-        db.kurangSaldo(nominal);
-        return true;
+        
+        boolean saldo=true;
+        
+        boolean tambah=db.tambahLog(sql);
+        if(tambah){
+            saldo=db.kurangSaldo(nominal);
+        }
+        
+        if(tambah && saldo){
+            return true;
+        }
+        else return false;
     }
     
     public void lihatLog(int awal, int akhir){
@@ -57,7 +68,15 @@ public class ControlLog {
     
     public boolean hapusLog(String Id){
         
+        String sql="delete from logtransaksi "
+                +"where id='"+Id+"'"; 
         
-        return true;
+        boolean hapus=db.hapusLog(sql);
+        
+        if(hapus){
+            return true;
+        }
+        else return false;
+       
     }
 }

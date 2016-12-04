@@ -216,7 +216,7 @@ public class TambahLog extends javax.swing.JFrame {
 
 
                        if(tambah)JOptionPane.showMessageDialog(null,"berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
-                       else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
+                       else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali atau cek saldo anda","tambah" , JOptionPane.PLAIN_MESSAGE);
                     }
                 
                 else{

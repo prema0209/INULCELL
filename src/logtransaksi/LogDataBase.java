@@ -39,7 +39,6 @@ public class LogDataBase {
             connection=DriverManager.getConnection("jdbc:ucanaccess://"
                     +"E:/INULCELL.accdb;","","");
             
-            System.out.println("berhasil");
             
             stmt= connection.createStatement();
             //rsLogTransaksi=stmt.executeQuery("SELECT * from LogTransaksi");
@@ -54,35 +53,37 @@ public class LogDataBase {
         try {
             saldo=stmt.executeQuery("SELECT * from saldo");
             
-            System.out.println("test");
+          
            
            saldo.next();
            long saldoUpdate=saldo.getLong("saldo");
-           System.out.println("test");
+           
            
            long saldoUpdate2=saldoUpdate-(Integer.parseInt(nominal));
            
            String sql2="Update saldo Set "
                 +"saldo='"+saldoUpdate2+"' where saldo="+saldoUpdate;
-           System.out.println(sql2);
+           
            
            
            int berhasil=stmt.executeUpdate(sql2);
-           System.out.println("test");
+           
+           return true;
+           
            
         } catch (SQLException ex) {
             Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-          return false;
+          
     }
     
-    public boolean tambahLog(String sql, String nominal){
+    public boolean tambahLog(String sql){
         
         connectDB();
         
         try{
            int berhasil=stmt.executeUpdate(sql);
-            System.out.println("test");
             
             return true;
            
@@ -104,9 +105,19 @@ public class LogDataBase {
         
     }
     
-    public boolean hapusLog(int NoID) {
+    public boolean hapusLog(String sql) {
+        connectDB();
         
-        
+        try{
+           int berhasil=stmt.executeUpdate(sql);
+            
+            return true;
+           
+        }
+        catch (SQLException errMsg) {
+           System.out.println("ada kesalahan : "+ errMsg.getMessage());
+           
         return false;
+        }
     }
 }

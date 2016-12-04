@@ -137,18 +137,32 @@ public class GantiPassword extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(27, 27, 27)
-                .addComponent(ganti)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(back)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5))
+                    .addComponent(txtUserLama, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                    .addComponent(txtPassLama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtUserBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE))
+                    .addComponent(txtPassBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(back)
+                    .addComponent(ganti))
                 .addContainerGap())
         );
 
@@ -176,28 +190,25 @@ public class GantiPassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                       
 
-    private void gantiActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        if((newuser.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"User Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
-        else if((newpass.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"Pass Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-        String user = newuser.getText();
-        String pass = newpass.getText();
+    private void gantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gantiActionPerformed
+        String user = txtUserLama.getText();
+        String pass = txtPassLama.getText();
         
-        control.newUser(user, pass);
+        //control.newUser(user, pass);
         
         JOptionPane.showMessageDialog(null,"Berhasil di ganti", "Ganti Username & Password", JOptionPane.PLAIN_MESSAGE);
-    }                                     
-    }
+    }//GEN-LAST:event_gantiActionPerformed
+    
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
         menu = new MenuAwal();
         menu.setVisible(true);
         dispose();
     }                                    
 
+    private void txtPassBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassBaruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassBaruActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -239,8 +250,12 @@ public class GantiPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField newpass;
-    private javax.swing.JTextField newuser;
+    private javax.swing.JTextField txtPassBaru;
+    private javax.swing.JPasswordField txtPassLama;
+    private javax.swing.JTextField txtUserBaru;
+    private javax.swing.JTextField txtUserLama;
     // End of variables declaration                   
 }

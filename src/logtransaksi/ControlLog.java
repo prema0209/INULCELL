@@ -61,9 +61,16 @@ public class ControlLog {
         else return false;
     }
     
-    public void lihatLog(int awal, int akhir){
+    public Object[][] lihatLog(int index){
+       
         
         
+        Object[][] data = new Object[15][5];
+      
+        data = db.LihatLog(index);
+        
+        
+        return data;
     }
     
     public boolean hapusLog(String Id){

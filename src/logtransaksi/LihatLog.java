@@ -7,6 +7,7 @@
 package logtransaksi;
 
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,15 +18,31 @@ public class LihatLog extends javax.swing.JFrame {
     /**
      * Creates new form LihatLog
      */
-    private int indexAkhir;
-    private int indexAwal;
+    private int index;
     private LogTransaksi menuLog;
     private ControlLog control;
+    private String[] title = {"ID","Tanggal","No.Hp","Provider","Nominal"};
+    Object data[][];
+    
     
     public LihatLog() {
         initComponents();
-        indexAkhir=15;
-        indexAwal=1;
+        index=0;
+        data=new Object[15][5];
+        
+        
+    }
+    
+    public void updateTable(){
+       
+        
+        
+        
+        data=control.lihatLog(index);
+        
+        tabelLog.setModel(new DefaultTableModel(data,title));
+        
+        
     }
 
     /**
@@ -40,9 +57,10 @@ public class LihatLog extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelLog = new javax.swing.JTable();
         back = new javax.swing.JButton();
         next = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,8 +70,8 @@ public class LihatLog extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         jLabel1.setText("Lihat Log Transaksi");
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelLog.setAutoCreateRowSorter(true);
+        tabelLog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -90,9 +108,9 @@ public class LihatLog extends javax.swing.JFrame {
                 "ID", "Tanggal", "No. HP", "Provider", "Nominal"
             }
         ));
-        jTable1.setToolTipText("");
-        jTable1.setCellSelectionEnabled(true);
-        jScrollPane1.setViewportView(jTable1);
+        tabelLog.setToolTipText("");
+        tabelLog.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(tabelLog);
 
         back.setText("< Back");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -101,10 +119,17 @@ public class LihatLog extends javax.swing.JFrame {
             }
         });
 
-        next.setText("Next");
+        next.setText(">>");
         next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextActionPerformed(evt);
+            }
+        });
+
+        btnPrev.setText("<<");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
             }
         });
 
@@ -115,13 +140,16 @@ public class LihatLog extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(43, 43, 43)
-                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(64, 64, 64))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(next)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
@@ -138,7 +166,8 @@ public class LihatLog extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(next, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPrev, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -170,15 +199,30 @@ public class LihatLog extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+       
         control=new ControlLog();
+        index=index+15;
+      updateTable();
+        
       
-        control.lihatLog(indexAwal, indexAkhir);
-      
-        indexAwal=indexAkhir;
-        indexAkhir=indexAkhir+15;
+        
        
     }//GEN-LAST:event_nextActionPerformed
 
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+       control=new ControlLog();
+      if(index-15>0){  
+      index=index-15;
+        
+      updateTable();
+      }
+      
+        
+       
+    }//GEN-LAST:event_btnPrevActionPerformed
+
+
+    
     /**
      * @param args the command line arguments
      */
@@ -210,16 +254,18 @@ public class LihatLog extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                new LihatLog().setVisible(true);
+               
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JButton btnPrev;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton next;
+    private javax.swing.JTable tabelLog;
     // End of variables declaration//GEN-END:variables
 }

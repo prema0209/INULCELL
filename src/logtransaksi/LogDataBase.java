@@ -41,7 +41,7 @@ public class LogDataBase {
             
             
             stmt= connection.createStatement();
-            //rsLogTransaksi=stmt.executeQuery("SELECT * from LogTransaksi");
+            
             
             
         } catch (SQLException errMsg) {
@@ -99,10 +99,41 @@ public class LogDataBase {
         
     }
     
-    public void LihatLog(){
+    public Object[][] LihatLog(int index){
+        connectDB();
+        Object[][] data = new Object[15][5];
         
         
-        
+        try {
+            ResultSet rsLogTransaksi=stmt.executeQuery("SELECT * from LogTransaksi");
+            for(int i=0;i<index-15;i++) rsLogTransaksi.next();
+            
+             
+            for(int i=0;i<15;i++){
+               
+                
+               
+                    if( rsLogTransaksi.next()){
+                    data[i][0]=rsLogTransaksi.getString("ID");
+                    data[i][1]="29/09/1996";
+                    data[i][2]=rsLogTransaksi.getString("NoHp");
+                    data[i][3]=rsLogTransaksi.getString("provider");
+                    data[i][4]=rsLogTransaksi.getString("jumlah");
+                    }
+                    else break;
+            }
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+         
+                 
+         
+         
+                 return data;
     }
     
     public boolean hapusLog(String sql) {

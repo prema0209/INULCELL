@@ -6,6 +6,9 @@
 
 package logtransaksi;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  *
  * @author prema
@@ -13,10 +16,14 @@ package logtransaksi;
 public class ControlLog {
     
     LogDataBase db;
+    Calendar cal;
+    SimpleDateFormat format;
     
     public ControlLog(){
         db=new LogDataBase();
-        
+        cal = Calendar.getInstance();
+
+        format = new SimpleDateFormat("dd/MM/yyyy");
     }
 
     public boolean cek(String NoHp){
@@ -40,10 +47,11 @@ public class ControlLog {
     }
     public boolean tambahLog(String NoHp, String Provider, String nominal){
         
+        String Tanggal = format.format(cal.getTime());
         
-        
-        String sql="Insert Into logtransaksi (NoHp, provider, jumlah) Values"
-                +"('"+NoHp+"',"
+        String sql="Insert Into logtransaksi (Tanggal, NoHp, provider, jumlah) Values"
+                +"('"+Tanggal+"',"
+                +"'"+NoHp+"',"
                 + "'"+Provider+"',"
                 + "'"+nominal+"')";
         

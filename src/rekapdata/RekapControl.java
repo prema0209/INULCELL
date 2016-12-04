@@ -12,17 +12,39 @@ package rekapdata;
  */
 public class RekapControl {
     
+    RekapDB db;
     
     public RekapControl(){
-        
+        db=new RekapDB();
         
     }
     
     public String Harian(int a, int b){
+        int awal=0;
+        int akhir=0;
+        String sql="";
         
-        String x="1";
+        if(b==2){
+            //jumlah transaksi
+            
+            sql="SELECT count(id) from logtransaksi where tanggal='"+a+"'";
+           
+             
+            
+            
+        }
+        else if(b==3){
+            //provider juara
+            
+            
+        }
+        else{
+            //Keuntungan
+            
+            
+        }
         
-        return x;
+        return "";
     }
     
     public String Mingguan(int a, int b){

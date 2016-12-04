@@ -19,9 +19,9 @@ public class RekapDB {
         
     }
     
-    public void ambilData(String a){
+    public Integer ambilData(int a){
         
         
-        
+        return a;
     }
 }

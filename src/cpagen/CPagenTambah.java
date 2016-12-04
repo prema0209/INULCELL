@@ -200,7 +200,7 @@ public class CPagenTambah extends javax.swing.JFrame {
         control=new CpControl();
 
         String namaCP = nama.getText();
-        String noHp = nohp.toString();
+        String noHp = nohp.getText();
 
         boolean tambah = control.tambah(namaCP, noHp);
 

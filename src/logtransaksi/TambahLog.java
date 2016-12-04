@@ -93,7 +93,7 @@ public class TambahLog extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Jumlah   :");
 
-        cbJumlah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5.000", "10.000", "15.000", "20.000", "25.000", "50.000", "100.000" }));
+        cbJumlah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5000", "10000", "15000", "20000", "25000", "50000", "100000" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -192,35 +192,37 @@ public class TambahLog extends javax.swing.JFrame {
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         control=new ControlLog();
         
-        try{
-            if((txtNoHp.getText()).equals("")){
+            String NoHp=txtNoHp.getText();
+        
+            if(NoHp.equals("")){
                 JOptionPane.showMessageDialog(null,"No Hp Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
             }
+        
+            
             else{
-                if((txtNoHp.getText()).length()>9){
-                    if(((txtNoHp.getText()).substring(0,1)).equals("0") || ((txtNoHp.getText()).substring(0,2)).equals("62") ){
-
-                        long tes=Long.parseLong(txtNoHp.getText());
-
-                        String noHp=txtNoHp.getText();
-                        String Provider=(cbProvider).toString();
+               boolean tes=control.cek(NoHp);
+               
+               
+               if(tes){
+                
+               
+                        String Provider=(cbProvider.getSelectedItem()).toString();
                         String Nominal=(cbJumlah.getSelectedItem()).toString();
+                        
+                        System.out.println(NoHp+", "+Provider+", "+Nominal);
 
-                        boolean tambah=control.tambahLog(noHp, Provider, Nominal);
+                        boolean tambah=control.tambahLog(NoHp, Provider, Nominal);
+                        
 
 
                        if(tambah)JOptionPane.showMessageDialog(null,"berhasil di tambahkan", "tambah", JOptionPane.PLAIN_MESSAGE);
                        else JOptionPane.showMessageDialog(null,"gagal di tambahkan, silakan coba kembali","tambah" , JOptionPane.PLAIN_MESSAGE);
                     }
-                }
+                
                 else{
                     JOptionPane.showMessageDialog(null,"No Hp salah", "tambah", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        }
-        catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null,"No Hp salah", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_tambahActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

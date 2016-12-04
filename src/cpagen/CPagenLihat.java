@@ -239,3 +239,4 @@ public class CPagenLihat extends javax.swing.JFrame {
     private javax.swing.JTable tabelCPAgen;
     // End of variables declaration                   
 }
+u

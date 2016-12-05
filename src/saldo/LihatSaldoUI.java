@@ -20,6 +20,8 @@ public class LihatSaldoUI extends javax.swing.JFrame {
     
     public LihatSaldoUI() {
         initComponents();
+        data = new Saldo();
+        data.lihat();
     }
 
     /**
@@ -33,7 +35,7 @@ public class LihatSaldoUI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSaldo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,11 +46,16 @@ public class LihatSaldoUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         jLabel1.setText("Lihat Stock Pulsa");
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Nominal");
+        txtSaldo.setEditable(false);
+        txtSaldo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtSaldo.setForeground(new java.awt.Color(204, 204, 204));
+        txtSaldo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSaldo.setText("Nominal");
+        txtSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSaldoActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButton1.setText("< Back");
@@ -73,7 +80,7 @@ public class LihatSaldoUI extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(506, 506, 506)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -82,7 +89,7 @@ public class LihatSaldoUI extends javax.swing.JFrame {
                 .addGap(122, 122, 122)
                 .addComponent(jLabel1)
                 .addGap(36, 36, 36)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -112,6 +119,11 @@ public class LihatSaldoUI extends javax.swing.JFrame {
         data2 = new MenuSaldo();
         data2.setVisible(true);
         dispose();
+    }                                        
+
+    private void txtSaldoActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        System.out.println("test");
+        txtSaldo.setText(data.lihat());
     }                                        
 
     /**
@@ -153,6 +165,6 @@ public class LihatSaldoUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtSaldo;
     // End of variables declaration                   
 }

@@ -7,21 +7,57 @@
 package login;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import menuawal.MenuAwal;
-
-
+import java.sql.PreparedStatement;
 
 public class LogInUI extends javax.swing.JFrame {
-
+    ArrayList<LogInDB> list = new ArrayList<>();
+    String[] title = {"User Lama", "Password Lama"};
+    //int index = 0;
+    
     /**
      * Creates new form LogInUI
      */
+    Connection connection;
+     Statement stmt;
+     ResultSet rsUser;
+     PreparedStatement pst;
     private LogIn control;
     
-    public LogInUI() {
+     public LogInUI() {
+        try
+        {
+        connection = DriverManager.getConnection("jdbc:ucanaccess://"
+                + "E:/Matkul semester 3/ddppl/LogIn.accdb","", "");
+        System.out.println("Berhasil Konek");
+        
+        stmt = connection.createStatement();
+        rsUser = stmt.executeQuery("SELECT * FROM LogIn");
+        
+        
+        
+        while(rsUser.next()==true)
+        {
+            list.add(new LogInDB(rsUser.getString("Username"),
+                    rsUser.getString("Password")));
+
+        }
+        
+        
+        } catch (SQLException errMsg)
+        {
+            System.out.println("Ada Kesalahan" + errMsg.getMessage());
+        }    
         initComponents();
     }
+    
 
     public void loginActionPerformed() {
         
@@ -56,7 +92,7 @@ public class LogInUI extends javax.swing.JFrame {
         jLabel2.setText("Username   :");
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel3.setText("Password    :");
+        jLabel3.setText("Password :");
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,28 +131,25 @@ public class LogInUI extends javax.swing.JFrame {
                             .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(33, 33, 33))
+                .addGap(13, 13, 13))
         );
-        jPanel1Layout.setVerticalGroup(
+      jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(txtUsername)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(50, 50, 50)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,25 +174,49 @@ public class LogInUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        control = new LogIn();
+   private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
+        String sql = "SELECT * FROM LogIn WHERE Username=? AND Password=?";
+        
+        try{
+            pst=connection.prepareStatement(sql);
+            pst.setString(1, txtUsername.getText());
+            pst.setString(2, txtPassword.getText());
+            
+            rsUser=pst.executeQuery();
+            
+        if(rsUser.next()){
+            JOptionPane.showMessageDialog(null, "Username atau Password benar", "Success", JOptionPane.INFORMATION_MESSAGE);
+            MenuAwal m = new MenuAwal();
+            m.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Log In", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Log In", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        /*control = new LogIn();
+
         
         String password = txtPassword.getText();
         String username = txtUsername.getText();
         
         boolean login = control.login(username, password);
         
-        if(login){
-            //close();
+       /* if(Login)){
+            
+            close();
             MenuAwal m = new MenuAwal();
             m.setVisible(true);
-            dispose();
         }
         else {
             txtUsername.setText("");
             txtPassword.setText("");
             JOptionPane.showMessageDialog(null, "Username atau Password salah", "Wrong Pass", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
         /*
         if(password.contains("admin") && username.contains("admin")) {
             txtUsername.setText("");
@@ -178,7 +235,7 @@ public class LogInUI extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+   private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
@@ -209,7 +266,7 @@ public class LogInUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+       /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogInUI().setVisible(true);

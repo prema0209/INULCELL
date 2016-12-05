@@ -28,6 +28,8 @@ public class CPagenLihat extends javax.swing.JFrame {
      */
     public CPagenLihat() {
         initComponents();
+        control = new CpControl();
+        control.lihat();
   //      this.indexAwal = 1;
   //      this.indexAkhir = 5;
     }

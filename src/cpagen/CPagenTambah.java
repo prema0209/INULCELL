@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import logtransaksi.ControlLog;
 import logtransaksi.LogTransaksi;
 
@@ -123,14 +124,8 @@ public class CPagenTambah extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(back)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(469, 469, 469))))
+                .addComponent(back)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(258, 258, 258)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,6 +143,10 @@ public class CPagenTambah extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(tambah)
                         .addGap(541, 541, 541))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(469, 469, 469))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +200,7 @@ public class CPagenTambah extends javax.swing.JFrame {
         control=new CpControl();
 
         String namaCP = nama.getText();
-        String noHp = nohp.toString();
+        String noHp = nohp.getText();
 
         boolean tambah = control.tambah(namaCP, noHp);
 
@@ -212,7 +211,7 @@ public class CPagenTambah extends javax.swing.JFrame {
         }
         else JOptionPane.showMessageDialog(null,"Gagal di tambahkan, silakan coba kembali! \nNama Agen tidak boleh kosong","Tambah" , JOptionPane.ERROR_MESSAGE);
     }                                      
-
+        
     private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
         menu = new MenuCPagen();
         menu.setVisible(true);

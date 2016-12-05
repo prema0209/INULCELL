@@ -310,14 +310,18 @@ public class GantiPassword extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton ganti;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField newpass;
-    private javax.swing.JTextField newuser;
-    // End of variables declaration                   
+    private javax.swing.JTextField txtPassBaru;
+    private javax.swing.JPasswordField txtPassLama;
+    private javax.swing.JTextField txtUserBaru;
+    private javax.swing.JTextField txtUserLama;
+    // End of variables declaration//GEN-END:variables
 }

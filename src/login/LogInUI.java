@@ -174,25 +174,49 @@ public class LogInUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        control = new LogIn();
+   private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
+        String sql = "SELECT * FROM LogIn WHERE Username=? AND Password=?";
+        
+        try{
+            pst=connection.prepareStatement(sql);
+            pst.setString(1, txtUsername.getText());
+            pst.setString(2, txtPassword.getText());
+            
+            rsUser=pst.executeQuery();
+            
+        if(rsUser.next()){
+            JOptionPane.showMessageDialog(null, "Username atau Password benar", "Success", JOptionPane.INFORMATION_MESSAGE);
+            MenuAwal m = new MenuAwal();
+            m.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Log In", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Log In", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        /*control = new LogIn();
+
         
         String password = txtPassword.getText();
         String username = txtUsername.getText();
         
         boolean login = control.login(username, password);
         
-        if(login){
-            //close();
+       /* if(Login)){
+            
+            close();
             MenuAwal m = new MenuAwal();
             m.setVisible(true);
-            dispose();
         }
         else {
             txtUsername.setText("");
             txtPassword.setText("");
             JOptionPane.showMessageDialog(null, "Username atau Password salah", "Wrong Pass", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
         /*
         if(password.contains("admin") && username.contains("admin")) {
             txtUsername.setText("");
@@ -211,7 +235,7 @@ public class LogInUI extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+   private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
@@ -242,7 +266,7 @@ public class LogInUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+       /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LogInUI().setVisible(true);

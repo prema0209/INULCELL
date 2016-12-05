@@ -226,11 +226,11 @@ public class GantiPassword extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void newuserActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void txtUserLamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserLamaActionPerformed
         // TODO add your handling code here:
-    }                                       
+    }//GEN-LAST:event_txtUserLamaActionPerformed                                
 
     private void gantiActionPerformed(java.awt.event.ActionEvent evt) {                                      
         if((newuser.getText()).equals("")){

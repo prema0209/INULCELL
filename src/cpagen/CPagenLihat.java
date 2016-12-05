@@ -17,9 +17,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CPagenLihat extends javax.swing.JFrame {
 
-    private CPagenDB data;
+    //private CPagenDB data;
     private MenuCPagen menu;
     private CpControl control;
+    private int index;
+    private String[] title = {"ID, Nama, NoHp"};
+    Object data[][];
  //   private int indexAwal;
  //   private int indexAkhir;
     
@@ -28,8 +31,16 @@ public class CPagenLihat extends javax.swing.JFrame {
      */
     public CPagenLihat() {
         initComponents();
+        //control = new CpControl();
+        index=0;
+        data=new Object[35][3];
   //      this.indexAwal = 1;
   //      this.indexAkhir = 5;
+    }
+    
+    public void updateTable(){
+        data=control.lihat(index);
+        tabelCPAgen.setModel(new DefaultTableModel(data,title));   
     }
     
     /**
@@ -49,6 +60,8 @@ public class CPagenLihat extends javax.swing.JFrame {
         tabelCPAgen = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        next = new javax.swing.JButton();
+        prev = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -138,6 +151,20 @@ public class CPagenLihat extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        next.setText("next");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
+
+        prev.setText("Prev");
+        prev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,11 +172,20 @@ public class CPagenLihat extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(back))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(back)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(prev)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(next))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(489, 489, 489)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1203, Short.MAX_VALUE)))
@@ -162,7 +198,11 @@ public class CPagenLihat extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(next)
+                    .addComponent(prev))
+                .addGap(2, 2, 2)
                 .addComponent(back)
                 .addContainerGap())
         );
@@ -191,6 +231,21 @@ public class CPagenLihat extends javax.swing.JFrame {
         menu = new MenuCPagen();
         menu.setVisible(true);
         dispose();
+    }                                    
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        control=new CpControl();
+        index=index+15;
+      updateTable();
+    }                                    
+
+    private void prevActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        control=new CpControl();
+      if(index-15>0){  
+      index=index-15;
+        
+      updateTable();
+      }
     }                                    
 
     /**
@@ -236,7 +291,8 @@ public class CPagenLihat extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton next;
+    private javax.swing.JButton prev;
     private javax.swing.JTable tabelCPAgen;
     // End of variables declaration                   
 }
-u

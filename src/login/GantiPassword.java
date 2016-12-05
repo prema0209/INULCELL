@@ -232,28 +232,49 @@ public class GantiPassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserLamaActionPerformed                                
 
-    private void gantiActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        if((newuser.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"User Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
-        else if((newpass.getText()).equals("")){
-            JOptionPane.showMessageDialog(null,"Pass Harus Diisi", "tambah", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-        String user = newuser.getText();
-        String pass = newpass.getText();
+    private void gantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gantiActionPerformed
         
-        control.newUser(user, pass);
+       String sql = "SELECT * FROM LogIn WHERE Username=? AND Password=?";
+
+       LogInDB user = new LogInDB();
+        user.setUser(txtUserBaru.getText());
+        user.setPass(txtPassBaru.getText());
         
-        JOptionPane.showMessageDialog(null,"Berhasil di ganti", "Ganti Username & Password", JOptionPane.PLAIN_MESSAGE);
-    }                                     
-    }
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        menu = new MenuAwal();
+       String sql1;
+       sql1 = "UPDATE LogIn SET "
+                + "Username='" + txtUserBaru.getText() + "',"
+                + "Password='" + txtPassBaru.getText() + "';";
+        
+        try{
+            pst=connection.prepareStatement(sql);
+            pst.setString(1, txtUserLama.getText());
+            pst.setString(2, txtPassLama.getText());
+            rsUser=pst.executeQuery();
+            
+            //System.out.print(sql1);
+            
+        if(rsUser.next()){
+            JOptionPane.showMessageDialog(null, "Berhasil diganti", "Success", JOptionPane.INFORMATION_MESSAGE);
+            int berhasil = stmt.executeUpdate(sql1);
+        }else{
+            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Change", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Change", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_gantiActionPerformed
+    
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        MenuAwal menu = new MenuAwal();
         menu.setVisible(true);
         dispose();
-    }                                    
+    }//GEN-LAST:event_backActionPerformed                        
 
+    private void txtPassBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassBaruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassBaruActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -280,7 +301,7 @@ public class GantiPassword extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GantiPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

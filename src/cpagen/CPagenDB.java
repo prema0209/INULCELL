@@ -13,7 +13,7 @@ package cpagen;
 public class CPagenDB {
     private CPagenLihat lihat;
     
-    private String no;
+    //private String no;
     private String nama;
     private String nohp;
     
@@ -21,8 +21,8 @@ public class CPagenDB {
         
     }
     
-    public CPagenDB(String no, String nama, String nohp){
-        this.no = no;
+    public CPagenDB(String nama, String nohp){
+        //this.no = no;
         this.nama = nama;
         this.nohp = nohp;
     }
@@ -39,23 +39,9 @@ public class CPagenDB {
         
     }
     
-    public boolean hapus(int ID){
+    public boolean hapus(String nama){
         return false;
     } 
-
-    /**
-     * @return the no
-     */
-    public String getNo() {
-        return no;
-    }
-
-    /**
-     * @param no the no to set
-     */
-    public void setNo(String no) {
-        this.no = no;
-    }
 
     /**
      * @return the nama

@@ -13,8 +13,15 @@ package saldo;
 public class SaldoDB {
     private int nominal;
     
+    public SaldoDB(){
+        
+    }
     public SaldoDB(int nominal){
         this.nominal = nominal;
+    }
+    
+    public SaldoDB(String nominalStr) {
+        this.nominal = Integer.parseInt(nominalStr);
     }
     
     public void connectDB(){

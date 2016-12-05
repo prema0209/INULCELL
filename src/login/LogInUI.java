@@ -7,16 +7,28 @@
 package login;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import menuawal.MenuAwal;
-
-
+import java.sql.PreparedStatement;
 
 public class LogInUI extends javax.swing.JFrame {
-
+    ArrayList<LogInDB> list = new ArrayList<>();
+    String[] title = {"User Lama", "Password Lama"};
+    //int index = 0;
+    
     /**
      * Creates new form LogInUI
      */
+    Connection connection;
+     Statement stmt;
+     ResultSet rsUser;
+     PreparedStatement pst;
     private LogIn control;
     
     public LogInUI() {

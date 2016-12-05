@@ -47,10 +47,10 @@ public class RekapDB {
         connectDB();
                 
         try {
-             System.out.print("test");
+            
             data=stmt.executeQuery(sql);
             
-            System.out.print("test");
+         
             data.next();
             String a=data.getString("data");
             

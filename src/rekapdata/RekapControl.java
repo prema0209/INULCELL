@@ -174,7 +174,7 @@ public class RekapControl {
         int bulan=(Integer.parseInt(Tanggal.substring(3, 5)))*30;
         int hari=(Integer.parseInt(Tanggal.substring(0, 2)));
         
-        System.out.println(tahun+", "+bulan+", "+hari+", "+pengurang);
+        
         
         int Tanggal1=0;
         int Tanggal2=tahun+bulan+hari-(7*a);
@@ -239,7 +239,7 @@ public class RekapControl {
             
             
             sql="SELECT count(id) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
-            System.out.print(sql);
+           
              
              
             hasil=db.ambilData(sql);
@@ -277,8 +277,7 @@ public class RekapControl {
                 hitung=db.ambilData(sql);
                 
                 test=Integer.parseInt(hitung);
-                System.out.println("");
-                System.out.println(test+", "+banyak);
+               
                 
                 
                 if(test>banyak){hasil=provider[i][0];
@@ -298,7 +297,7 @@ public class RekapControl {
             //Keuntungan
             
             sql="SELECT sum(jumlah) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
-            System.out.print(sql);
+            
             String hasil=db.ambilData(sql);
             
             return hasil;
@@ -354,8 +353,7 @@ public class RekapControl {
             
             
             sql="SELECT count(id) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
-            System.out.print(sql);
-             
+           
              
             hasil=db.ambilData(sql);
             
@@ -392,9 +390,7 @@ public class RekapControl {
                 hitung=db.ambilData(sql);
                 
                 test=Integer.parseInt(hitung);
-                System.out.println("");
-                System.out.println(test+", "+banyak);
-                
+               
                 
                 if(test>banyak){hasil=provider[i][0];
                         banyak=test;
@@ -413,7 +409,7 @@ public class RekapControl {
             //Keuntungan
             
             sql="SELECT sum(jumlah) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
-            System.out.print(sql);
+            
             String hasil=db.ambilData(sql);
             
             return hasil;

@@ -49,7 +49,7 @@ public class ControlLog {
         
         String Tanggal = format.format(cal.getTime());
         int hari=(Integer.parseInt(Tanggal.substring(0, 2)));
-        int tahun=(Integer.parseInt(Tanggal.substring(6, 10)))*356;
+        int tahun=(Integer.parseInt(Tanggal.substring(6, 10)))*365;
         int bulan=(Integer.parseInt(Tanggal.substring(3, 5)))*30;
         
         int angka=hari+bulan+tahun;

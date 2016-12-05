@@ -33,13 +33,10 @@ public class RekapMingguan extends javax.swing.JFrame {
         
         for(int i=0;i<4;i++){
             data[i][0]=i+1;
-              data[i][1]=control.Bulanan(i+1, 2);
-            data[i][2]=control.Bulanan(i+1, 3);
-            data[i][3]=control.Bulanan(i+1, 4);
-            data[i][4]=control.Bulanan(i+1, 5);
-            data[i][5]=control.Bulanan(i+1, 6);
-            data[i][6]=control.Bulanan(i+1, 7);
-            data[i][7]=control.Bulanan(i+1, 8);
+            data[i][1]=control.Mingguan(i+1, 2);
+            data[i][2]=control.Mingguan(i+1, 3);
+            data[i][3]=control.Mingguan(i+1, 4);
+           
            
             
         }

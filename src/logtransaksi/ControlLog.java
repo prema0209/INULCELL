@@ -48,12 +48,18 @@ public class ControlLog {
     public boolean tambahLog(String NoHp, String Provider, String nominal){
         
         String Tanggal = format.format(cal.getTime());
+        int hari=(Integer.parseInt(Tanggal.substring(0, 2)));
+        int tahun=(Integer.parseInt(Tanggal.substring(6, 10)))*356;
+        int bulan=(Integer.parseInt(Tanggal.substring(3, 5)))*30;
         
-        String sql="Insert Into logtransaksi (Tanggal, NoHp, provider, jumlah) Values"
+        int angka=hari+bulan+tahun;
+        
+        String sql="Insert Into logtransaksi (Tanggal, NoHp, provider, jumlah, angka) Values"
                 +"('"+Tanggal+"',"
                 +"'"+NoHp+"',"
                 + "'"+Provider+"',"
-                + "'"+nominal+"')";
+                + "'"+nominal+"',"
+                +"'"+angka+"')";
         
         
         boolean saldo=true;

@@ -6,15 +6,23 @@
 
 package login;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import menuawal.MenuAwal;
+import java.sql.PreparedStatement;
 
-/**
- *
- * @author UsuiTakumi
- */
+
 public class GantiPassword extends javax.swing.JFrame {
-
+    ArrayList<LogInDB> list = new ArrayList<>();
+    String[] title = {"User Lama", "Password Lama"};
+    
     /**
      * Creates new form GantiPassword
      */

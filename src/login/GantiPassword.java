@@ -265,12 +265,16 @@ public class GantiPassword extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_gantiActionPerformed
     
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        menu = new MenuAwal();
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        MenuAwal menu = new MenuAwal();
         menu.setVisible(true);
         dispose();
-    }                                    
+    }//GEN-LAST:event_backActionPerformed  
 
+ private void txtPassBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassBaruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassBaruActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -306,14 +310,18 @@ public class GantiPassword extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton ganti;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField newpass;
-    private javax.swing.JTextField newuser;
-    // End of variables declaration                   
+    private javax.swing.JTextField txtPassBaru;
+    private javax.swing.JPasswordField txtPassLama;
+    private javax.swing.JTextField txtUserBaru;
+    private javax.swing.JTextField txtUserLama;
+    // End of variables declaration//GEN-END:variables
 }

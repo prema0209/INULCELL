@@ -6,18 +6,18 @@
 
 package login;
 
-/**
- *
- * @author UsuiTakumi
- */
 public class LogInDB {
     
     private String User;
     private String Pass;
     
     public LogInDB(){
-        this.User = "admin";
-        this.Pass = "admin";
+        
+    }
+ public LogInDB(String username, String password)
+    {
+    this.User = username;
+    this.Pass = password;
     }
     
     public void connectDb(){

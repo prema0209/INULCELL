@@ -22,13 +22,14 @@ import java.util.logging.Logger;
 
 public class LogDataBase {
     LihatLog lihat;
-    Connection connection=null;
+    Connection connection;
     Statement stmt;
     ResultSet saldo;
     
     
     public LogDataBase(){
         lihat=new LihatLog();
+        connection=null;
         
         
     }

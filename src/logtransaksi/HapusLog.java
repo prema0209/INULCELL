@@ -56,11 +56,7 @@ public class HapusLog extends javax.swing.JFrame {
         jLabel1.setText("Hapus Log Transaksi");
 
         txtHapus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHapusActionPerformed(evt);
-            }
-        });
+       
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("ID Log : ");
@@ -166,9 +162,7 @@ public class HapusLog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_HapusActionPerformed
 
-    private void txtHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHapusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHapusActionPerformed
+ 
 
     /**
      * @param args the command line arguments

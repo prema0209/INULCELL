@@ -59,7 +59,6 @@ public class RekapHarian extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelBulanan = new javax.swing.JTable();
         Back = new javax.swing.JButton();
-        tampilkan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,13 +91,6 @@ public class RekapHarian extends javax.swing.JFrame {
             }
         });
 
-        tampilkan.setText("Tampilkan");
-        tampilkan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tampilkanActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,17 +98,17 @@ public class RekapHarian extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tampilkan))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(152, 152, 152)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(Back)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,9 +119,7 @@ public class RekapHarian extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Back)
-                    .addComponent(tampilkan))
+                .addComponent(Back)
                 .addContainerGap())
         );
 
@@ -159,10 +149,6 @@ public class RekapHarian extends javax.swing.JFrame {
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_BackActionPerformed
-
-    private void tampilkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilkanActionPerformed
-       updateTable();
-    }//GEN-LAST:event_tampilkanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +191,5 @@ public class RekapHarian extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelBulanan;
-    private javax.swing.JButton tampilkan;
     // End of variables declaration//GEN-END:variables
 }

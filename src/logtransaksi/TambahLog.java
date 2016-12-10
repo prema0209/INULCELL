@@ -79,11 +79,7 @@ public class TambahLog extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("No HP    :");
 
-        txtNoHp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNoHpActionPerformed(evt);
-            }
-        });
+        
 
         cbProvider.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Telkomsel", "Indosat", "XL", "Axis", "Smart", "3" }));
 
@@ -232,9 +228,7 @@ public class TambahLog extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void txtNoHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoHpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNoHpActionPerformed
+
 
     /**
      * @param args the command line arguments

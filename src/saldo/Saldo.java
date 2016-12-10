@@ -19,41 +19,40 @@ import java.util.ArrayList;
  * @author UsuiTakumi
  */
 public class Saldo {
-    
-    Connection connection=null;
-    Statement stmt;
-    ResultSet rsSaldo;
-    
-    ArrayList<SaldoDB> list =new ArrayList<SaldoDB>();
-    String[] title = {"nominal"};
-    int index = 0;
+   
+        SaldoDB db;
     
     public Saldo(){
-        try {
-            connection=DriverManager.getConnection("jdbc:ucanaccess://"
-                    +"D:/E-Book/DDPL - Dasar Dasar Pengembangan Perangkat Lunak/INULCELL;","","");
-            
-            System.out.println("berhasil");
-            
-            stmt= connection.createStatement();
-            rsSaldo=stmt.executeQuery("SELECT * FROM saldoDB");
-            
-            while(rsSaldo.next()){
-                list.add(new SaldoDB(rsSaldo.getInt("nominal")));
-            }
-            
-        } catch (SQLException errMsg) {
-           System.out.println("ada kesalahan : "+ errMsg.getMessage());
-        }
+            db=new SaldoDB();
     }
     
     /*  apabila melakukan tambah(integer), maka return true
         apabila bukan integer, maka retrun false */
     public boolean tambah(int saldo){
-        return true;
+        
+        
+        String sql;
+        
+       
+        int saldoAwal=Integer.parseInt(lihat());
+        
+        saldo=saldo+saldoAwal;
+        
+        sql = "Update Saldo set saldo="
+                +"'"+saldo+"'";
+        
+        
+        boolean hasil=db.tambahDb(sql);
+    
+        return hasil; 
     }
     
-    public void lihat(){
+    
+    public String lihat(){
         
+        String saldo=db.LihatSaldo();
+        
+        
+        return saldo;
     }
 }

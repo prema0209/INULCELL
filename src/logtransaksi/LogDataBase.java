@@ -21,14 +21,14 @@ import java.util.logging.Logger;
 
 
 public class LogDataBase {
-    LihatLog lihat;
+  
     Connection connection;
     Statement stmt;
     ResultSet saldo;
     
     
     public LogDataBase(){
-        lihat=new LihatLog();
+       
         connection=null;
         
         
@@ -117,7 +117,7 @@ public class LogDataBase {
                
                     if( rsLogTransaksi.next()){
                     data[i][0]=rsLogTransaksi.getString("ID");
-                    data[i][1]="29/09/1996";
+                    data[i][1]=rsLogTransaksi.getString("tanggal");
                     data[i][2]=rsLogTransaksi.getString("NoHp");
                     data[i][3]=rsLogTransaksi.getString("provider");
                     data[i][4]=rsLogTransaksi.getString("nominal");

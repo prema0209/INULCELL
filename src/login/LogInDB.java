@@ -35,4 +35,18 @@ public class LogInDB {
     public void setPass(String Pass) {
         this.Pass = Pass;
     }
+
+    /**
+     * @return the User
+     */
+    public String getUser() {
+        return User;
+    }
+
+    /**
+     * @return the Pass
+     */
+    public String getPass() {
+        return Pass;
+    }
 }

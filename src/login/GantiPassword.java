@@ -26,13 +26,39 @@ public class GantiPassword extends javax.swing.JFrame {
     /**
      * Creates new form GantiPassword
      */
-    private LogIn control;
-    private MenuAwal menu;
+    /*private LogIn control;
+    private MenuAwal menu;*/
+    Connection connection;
+     Statement stmt;
+     ResultSet rsUser;
+     PreparedStatement pst;
     
     public GantiPassword() {
+        try
+        {
+        connection = DriverManager.getConnection("jdbc:ucanaccess://"
+                + "E:/Matkul semester 3/ddppl/LogIn.accdb","", "");
+        System.out.println("Berhasil Konek");
+        
+        stmt = connection.createStatement();
+        rsUser = stmt.executeQuery("SELECT * FROM LogIn");
+        
+        
+        
+        while(rsUser.next()==true)
+        {
+            list.add(new LogInDB(rsUser.getString("Username"),
+                    rsUser.getString("Password")));
+
+        }
+        
+        
+        } catch (SQLException errMsg)
+        {
+            System.out.println("Ada Kesalahan" + errMsg.getMessage());
+        }    
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

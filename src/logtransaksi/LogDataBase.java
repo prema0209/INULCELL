@@ -51,7 +51,7 @@ public class LogDataBase {
     }
     
     public boolean kurangSaldo(int nominal){
-        
+        connectDB();
         try {
             saldo=stmt.executeQuery("SELECT * from saldo");
             
@@ -63,6 +63,10 @@ public class LogDataBase {
            
            long saldoUpdate2=saldoUpdate-nominal;
            
+           if(saldoUpdate2<0){
+               return false;
+           }
+           else{
            String sql2="Update saldo Set "
                 +"saldo='"+saldoUpdate2+"' where saldo="+saldoUpdate;
            
@@ -71,7 +75,7 @@ public class LogDataBase {
            int berhasil=stmt.executeUpdate(sql2);
            
            return true;
-           
+           }
            
         } catch (SQLException ex) {
             Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);

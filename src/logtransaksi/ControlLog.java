@@ -90,10 +90,20 @@ public class ControlLog {
                 +"'"+angka+"')";
         
         
-        boolean saldo=true;
+        boolean saldo=false;
+        boolean tambah=false;
         
-        boolean tambah=db.tambahLog(sql);
-        if(tambah){
+        
+        
+        saldo=db.kurangSaldo(pokok);
+        
+        if(saldo){
+            
+            tambah=db.tambahLog(sql);
+        }
+        
+        if(!(tambah)){
+            pokok=pokok*-1;
             saldo=db.kurangSaldo(pokok);
         }
         

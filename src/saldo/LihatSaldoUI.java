@@ -6,6 +6,8 @@
 
 package saldo;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author UsuiTakumi
@@ -117,6 +119,7 @@ public class LihatSaldoUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         data2 = new MenuSaldo();
+        data2.setExtendedState(JFrame.MAXIMIZED_BOTH);
         data2.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -45,7 +45,7 @@ public class CpControl {
                 +"('"+nama+"',"
                 + "'"+NoHp+"')";
         
-        System.out.println(sql);
+        
         
         boolean tambah=db.tambah(sql);
         return true;

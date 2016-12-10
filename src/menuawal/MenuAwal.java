@@ -208,7 +208,7 @@ public class MenuAwal extends javax.swing.JFrame {
 
     private void GantiPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GantiPasswordActionPerformed
         ganti = new GantiPassword();
-        ganti.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         ganti.setVisible(true);
         dispose();
     }//GEN-LAST:event_GantiPasswordActionPerformed

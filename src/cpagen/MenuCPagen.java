@@ -8,6 +8,7 @@ package cpagen;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 import menuawal.MenuAwal;
 
 /**
@@ -170,24 +171,28 @@ public class MenuCPagen extends javax.swing.JFrame {
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         tambahCP = new CPagenTambah();
+        tambahCP.setExtendedState(JFrame.MAXIMIZED_BOTH);
         tambahCP.setVisible(true);
         dispose();
     }//GEN-LAST:event_tambahActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         menu = new MenuAwal();
+        menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
     private void lihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatActionPerformed
         lihatCP = new CPagenLihat();
+        lihatCP.setExtendedState(JFrame.MAXIMIZED_BOTH);
         lihatCP.setVisible(true);
         dispose();
     }//GEN-LAST:event_lihatActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         hapusCP = new CPagenHapus();
+        hapusCP.setExtendedState(JFrame.MAXIMIZED_BOTH);
         hapusCP.setVisible(true);
         dispose();
     }//GEN-LAST:event_hapusActionPerformed

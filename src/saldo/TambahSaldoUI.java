@@ -6,6 +6,7 @@
 
 package saldo;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -130,6 +131,7 @@ public class TambahSaldoUI extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         data2 = new MenuSaldo();
+        data2.setExtendedState(JFrame.MAXIMIZED_BOTH);
         data2.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed

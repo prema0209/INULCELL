@@ -6,6 +6,7 @@
 
 package saldo;
 
+import javax.swing.JFrame;
 import menuawal.MenuAwal;
 
 /**
@@ -151,18 +152,21 @@ public class MenuSaldo extends javax.swing.JFrame {
 
     private void LihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LihatActionPerformed
         lihat = new LihatSaldoUI();
+        lihat.setExtendedState(JFrame.MAXIMIZED_BOTH);
         lihat.setVisible(true);
         dispose();
     }//GEN-LAST:event_LihatActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         menuAwal = new MenuAwal();
+        menuAwal.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menuAwal.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
         tambah = new TambahSaldoUI();
+        tambah.setExtendedState(JFrame.MAXIMIZED_BOTH);
         tambah.setVisible(true);
         dispose();
     }//GEN-LAST:event_TambahActionPerformed

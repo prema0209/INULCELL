@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -205,6 +206,7 @@ public class CPagenLihat extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         menu = new MenuCPagen();
+        menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed

@@ -197,15 +197,13 @@
             <Component class="javax.swing.JComboBox" name="cbProvider">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="6">
                     <StringItem index="0" value="Telkomsel"/>
-                    <StringItem index="1" value="Simpati"/>
-                    <StringItem index="2" value="AS"/>
-                    <StringItem index="3" value="Mentari"/>
-                    <StringItem index="4" value="XL"/>
+                    <StringItem index="1" value="Indosat"/>
+                    <StringItem index="2" value="XL"/>
+                    <StringItem index="3" value="Axis"/>
+                    <StringItem index="4" value="Smart"/>
                     <StringItem index="5" value="3"/>
-                    <StringItem index="6" value="Im3"/>
-                    <StringItem index="7" value="mentari"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -230,13 +228,13 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="7">
-                    <StringItem index="0" value="5000"/>
-                    <StringItem index="1" value="10000"/>
-                    <StringItem index="2" value="15000"/>
-                    <StringItem index="3" value="20000"/>
-                    <StringItem index="4" value="25000"/>
-                    <StringItem index="5" value="50000"/>
-                    <StringItem index="6" value="100000"/>
+                    <StringItem index="0" value="5.000"/>
+                    <StringItem index="1" value="10.000"/>
+                    <StringItem index="2" value="15.000"/>
+                    <StringItem index="3" value="20.000"/>
+                    <StringItem index="4" value="25.000"/>
+                    <StringItem index="5" value="50.000"/>
+                    <StringItem index="6" value="100.000"/>
                   </StringArray>
                 </Property>
               </Properties>

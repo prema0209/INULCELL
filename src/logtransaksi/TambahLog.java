@@ -85,7 +85,7 @@ public class TambahLog extends javax.swing.JFrame {
             }
         });
 
-        cbProvider.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Telkomsel", "Simpati", "AS", "Mentari", "XL", "3", "Im3", "mentari" }));
+        cbProvider.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Telkomsel", "Indosat", "XL", "Axis", "Smart", "3" }));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Provider :");
@@ -93,7 +93,7 @@ public class TambahLog extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Jumlah   :");
 
-        cbJumlah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5000", "10000", "15000", "20000", "25000", "50000", "100000" }));
+        cbJumlah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5.000", "10.000", "15.000", "20.000", "25.000", "50.000", "100.000" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

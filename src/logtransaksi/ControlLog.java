@@ -46,6 +46,7 @@ public class ControlLog {
         }
     }
     public boolean tambahLog(String NoHp, String Provider, String nominal){
+        int untung=0;
         
         String Tanggal = format.format(cal.getTime());
         int hari=(Integer.parseInt(Tanggal.substring(0, 2)));
@@ -53,12 +54,39 @@ public class ControlLog {
         int bulan=(Integer.parseInt(Tanggal.substring(3, 5)))*30;
         
         int angka=hari+bulan+tahun;
+        int pokok=0;
+    
         
-        String sql="Insert Into logtransaksi (Tanggal, NoHp, provider, jumlah, angka) Values"
+        if(nominal.equals("5.000")){
+            untung=1000;
+            pokok=5500;
+            
+        }
+        else if(nominal.equals("10.000")){
+            untung=1100;
+            pokok=10400;
+            
+        }
+        else if(nominal.equals("25.000")){
+            untung=1500;
+            pokok=25000;
+        }
+        else if(nominal.equals("50.000")){
+            untung=2500;
+            pokok=49000;
+            
+        }else if(nominal.equals("100.000")){
+            untung=3500;
+            pokok=98000;
+        }
+        
+        
+        String sql="Insert Into logtransaksi (Tanggal, NoHp, provider,nominal, untung, angka) Values"
                 +"('"+Tanggal+"',"
                 +"'"+NoHp+"',"
                 + "'"+Provider+"',"
                 + "'"+nominal+"',"
+                + "'"+untung+"',"
                 +"'"+angka+"')";
         
         
@@ -66,7 +94,7 @@ public class ControlLog {
         
         boolean tambah=db.tambahLog(sql);
         if(tambah){
-            saldo=db.kurangSaldo(nominal);
+            saldo=db.kurangSaldo(pokok);
         }
         
         if(tambah && saldo){

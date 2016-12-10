@@ -30,15 +30,17 @@ public class RekapControl {
         hitung="";
         test=0;
         banyak=0;
-        provider=new String[8][2];
+        provider=new String[6][2];
             
             provider[0][0]="Telkomsel";
-            provider[1][0]="simpati";
-            provider[2][0]="AS";
-            provider[3][0]="Mentari";
-            provider[4][0]="XL";
+            provider[1][0]="Indosat";
+            provider[2][0]="XL";
+            provider[3][0]="Axis";
+            provider[4][0]="Smart";
             provider[5][0]="3";
-            provider[6][0]="im3";
+            
+            
+
             
         db=new RekapDB();
         cal = Calendar.getInstance();
@@ -94,7 +96,7 @@ public class RekapControl {
             return hasil;
         }
         else if(b==3){
-            for(int i=0;i<7;i++){
+            for(int i=0;i<6;i++){
                 sql="SELECT count(provider) as data from logtransaksi where provider='"
                         +provider[i][0]+"' and tanggal='"+Tanggal2+"'";
                 hitung=db.ambilData(sql);
@@ -105,7 +107,7 @@ public class RekapControl {
         }
         else{
            
-            sql="SELECT sum(jumlah) as data from logtransaksi where tanggal='"+Tanggal2+"'";
+            sql="SELECT sum(untung) as data from logtransaksi where tanggal='"+Tanggal2+"'";
             
             String hasil=db.ambilData(sql);
             
@@ -199,7 +201,7 @@ public class RekapControl {
         }
         else if(b==3){
             
-            for(int i=0;i<7;i++){
+            for(int i=0;i<6;i++){
                 sql="SELECT count(provider) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+" and provider='"+provider[i][0]+"'";
                 
                 hitung=db.ambilData(sql);
@@ -214,7 +216,7 @@ public class RekapControl {
             return hasil;
         }
         else{
-            sql="SELECT sum(jumlah) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
+            sql="SELECT sum(untung) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
             
             String hasil=db.ambilData(sql);
             
@@ -265,7 +267,7 @@ public class RekapControl {
             return hasil;
         }
         else if(b==3){
-            for(int i=0;i<7;i++){
+            for(int i=0;i<6;i++){
                 sql="SELECT count(provider) as data from logtransaksi where angka between "
                         +Tanggal1+" and "+Tanggal2+" and provider='"+provider[i][0]+"'";
                 
@@ -279,7 +281,7 @@ public class RekapControl {
             return hasil;
         }
         else{
-            sql="SELECT sum(jumlah) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
+            sql="SELECT sum(untung) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
             String hasil=db.ambilData(sql);
             return hasil;
         }    

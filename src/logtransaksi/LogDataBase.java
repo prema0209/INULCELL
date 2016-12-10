@@ -49,7 +49,8 @@ public class LogDataBase {
         }
     }
     
-    public boolean kurangSaldo(String nominal){
+    public boolean kurangSaldo(int nominal){
+        
         try {
             saldo=stmt.executeQuery("SELECT * from saldo");
             
@@ -59,7 +60,7 @@ public class LogDataBase {
            long saldoUpdate=saldo.getLong("saldo");
            
            
-           long saldoUpdate2=saldoUpdate-(Integer.parseInt(nominal));
+           long saldoUpdate2=saldoUpdate-nominal;
            
            String sql2="Update saldo Set "
                 +"saldo='"+saldoUpdate2+"' where saldo="+saldoUpdate;
@@ -118,7 +119,7 @@ public class LogDataBase {
                     data[i][1]="29/09/1996";
                     data[i][2]=rsLogTransaksi.getString("NoHp");
                     data[i][3]=rsLogTransaksi.getString("provider");
-                    data[i][4]=rsLogTransaksi.getString("jumlah");
+                    data[i][4]=rsLogTransaksi.getString("nominal");
                     }
                     else break;
             }

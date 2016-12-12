@@ -6,47 +6,86 @@
 
 package login;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class LogInDB {
     
-    private String User;
-    private String Pass;
+  
+    Connection connection=null;
+    Statement stmt;
+    ResultSet data;
     
     public LogInDB(){
         
     }
- public LogInDB(String username, String password)
-    {
-    this.User = username;
-    this.Pass = password;
+
+    
+   public boolean connectDB(){
+         try {
+            connection=DriverManager.getConnection("jdbc:ucanaccess://"
+                    +"E:/INULCELL.accdb;","","");
+            
+            
+            stmt= connection.createStatement();
+            
+            return true;
+            
+        } catch (SQLException errMsg) {
+           System.out.println("ada kesalahan : "+ errMsg.getMessage());
+           return false;
+        }
     }
     
-    public void connectDb(){
-        
+    public String ambilData(String sql,String dicari){
+        boolean connect=connectDB();
+                
+        if(connect){
+            try {
+
+                data=stmt.executeQuery(sql);
+
+
+               data.next();
+                String a=data.getString(dicari);
+                 
+
+                return a;
+
+            } 
+               catch (SQLException errMsg) {
+               System.out.println("ada kesalahan : "+ errMsg.getMessage());
+
+                 return "";
+
+                    }
+        }
+        return"";
     }
     
-    public boolean CekUserPass(String User, String Pass){
-        return Pass.contains("admin") && User.contains("admin");
-    }
+    
+    public boolean gantiData(String sql){
+        boolean connect=connectDB();
+                
+        if(connect){
+            try {
 
-    public void setUser(String User) {
-        this.User = User;
-    }
+                int berhasil=stmt.executeUpdate(sql);
 
-    public void setPass(String Pass) {
-        this.Pass = Pass;
-    }
 
-    /**
-     * @return the User
-     */
-    public String getUser() {
-        return User;
-    }
+                return true;
 
-    /**
-     * @return the Pass
-     */
-    public String getPass() {
-        return Pass;
+            } 
+               catch (SQLException errMsg) {
+               System.out.println("ada kesalahan : "+ errMsg.getMessage());
+
+                 return false;
+
+                    }
+        }
+        else return false;
     }
 }

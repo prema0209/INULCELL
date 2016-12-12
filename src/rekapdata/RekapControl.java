@@ -141,6 +141,8 @@ public class RekapControl {
             pengurang=6;
         }
         
+        
+        
         Tanggal = format.format(cal.getTime());
         
         int tahun=(Integer.parseInt(Tanggal.substring(6, 10)))*365;
@@ -148,7 +150,7 @@ public class RekapControl {
         int hari=(Integer.parseInt(Tanggal.substring(0, 2)));
         
         int Tanggal1=0;
-        int Tanggal2=tahun+bulan+hari-(7*a);
+        int Tanggal2=tahun+bulan+hari-(7*a)+13;
         
         if((hari-pengurang)<0){
             if(bulan<7){
@@ -189,18 +191,19 @@ public class RekapControl {
                     bulan=bulan-30;
             }
         }
-        Tanggal1=hari+bulan+tahun-pengurang-(7*(a+1));
+        Tanggal1=hari+bulan+tahun-pengurang-(7*(a+1))+14;
         
         if(b==2){
             sql="SELECT count(id) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
-           
+          
             hasil=db.ambilData(sql);
+            
             
             return hasil;
             
         }
         else if(b==3){
-            
+
             for(int i=0;i<6;i++){
                 sql="SELECT count(provider) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+" and provider='"+provider[i][0]+"'";
                 
@@ -232,32 +235,41 @@ public class RekapControl {
         int Tanggal1=0;
         int Tanggal2=0;
         
-        int tahun=(Integer.parseInt(Tanggal.substring(6, 10)))*365;
-        int bulan=(Integer.parseInt(Tanggal.substring(3, 5)))*30;
+        int tahun=(Integer.parseInt(Tanggal.substring(6, 10))*365);
+        int bulan=(Integer.parseInt(Tanggal.substring(3, 5)))-a;
+      
         
-        if(bulan-a>0)bulan=bulan-(a*30);
-        else{
+        
+        if(bulan-a<0){
             bulan=bulan-a+12;
-            tahun--;   
+            tahun=tahun-365;
         }
+        
+        int bulan2=bulan*30;
+        
+      
         if(bulan>7){
             if(bulan%2!=0){
-                Tanggal2=31+bulan+tahun;
+                Tanggal2=30+bulan2+tahun;
+               
             }
-            else Tanggal2=30+bulan+tahun;
+            else {
+                Tanggal2=31+bulan2+tahun;
+               
+            }
      
         }
-        else if (bulan==7)Tanggal2=31+bulan+tahun;
+        else if (bulan==7)Tanggal2=31+bulan2+tahun;
         
-        else{
+        else if(bulan<7){
             if(bulan%2!=0){
-                Tanggal2=30+bulan+tahun;
+                Tanggal2=30+bulan2+tahun;
             }
-            else Tanggal2=31+bulan+tahun;
+            else Tanggal2=31+bulan2+tahun;
             
         }
  
-        Tanggal1=1+bulan+tahun;
+        Tanggal1=1+bulan2+tahun;
         
         if(b==2){
             sql="SELECT count(id) as data from logtransaksi where angka between "+Tanggal1+" and "+Tanggal2+"";
@@ -267,16 +279,21 @@ public class RekapControl {
             return hasil;
         }
         else if(b==3){
+            hasil="";
+            banyak=0;
             for(int i=0;i<6;i++){
                 sql="SELECT count(provider) as data from logtransaksi where angka between "
                         +Tanggal1+" and "+Tanggal2+" and provider='"+provider[i][0]+"'";
                 
                 hitung=db.ambilData(sql);
+                
                 test=Integer.parseInt(hitung);
                 
                 if(test>banyak){hasil=provider[i][0];
                         banyak=test;
                 }
+                
+               
             }
             return hasil;
         }

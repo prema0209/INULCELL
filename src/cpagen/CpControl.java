@@ -6,17 +6,7 @@
 
 package cpagen;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import logtransaksi.LogDataBase;
+
 
 /**
  *
@@ -25,14 +15,7 @@ import logtransaksi.LogDataBase;
 public class CpControl {
     
     private CPagenDB db;
-    /*
-    Connection connection=null;
-    Statement stmt;
-    ResultSet rsCP;
-    
-    ArrayList<CPagenDB> list =new ArrayList<CPagenDB>();
-    String[] title = {"No ID","Nama","No. Hp"};
-    int index = 0;*/
+   
     
     public CpControl(){
         db = new CPagenDB();
@@ -52,7 +35,7 @@ public class CpControl {
     }
     
     public Object[][] lihat(int index){ 
-       Object[][] data = new Object[15][5];
+       Object[][] data = new Object[15][3];
         data = db.lihat(index);
         return data;
     }

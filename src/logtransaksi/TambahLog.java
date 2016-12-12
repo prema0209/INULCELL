@@ -205,7 +205,7 @@ public class TambahLog extends javax.swing.JFrame {
                         String Provider=(cbProvider.getSelectedItem()).toString();
                         String Nominal=(cbJumlah.getSelectedItem()).toString();
                         
-                        System.out.println(NoHp+", "+Provider+", "+Nominal);
+                        
 
                         boolean tambah=control.tambahLog(NoHp, Provider, Nominal);
                         

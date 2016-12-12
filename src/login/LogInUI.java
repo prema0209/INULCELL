@@ -5,64 +5,29 @@
  */
 
 package login;
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import menuawal.MenuAwal;
-import java.sql.PreparedStatement;
-import javax.swing.JFrame;
+
+
 
 public class LogInUI extends javax.swing.JFrame {
-    ArrayList<LogInDB> list = new ArrayList<>();
-    String[] title = {"User Lama", "Password Lama"};
-    //int index = 0;
-
+    
+    MenuAwal Menu;
     /**
      * Creates new form LogInUI
      */
-    Connection connection;
-     Statement stmt;
-     ResultSet rsUser;
-     PreparedStatement pst;
+    
     private LogIn control;
     
     public LogInUI() {
-        try
-        {
-        connection = DriverManager.getConnection("jdbc:ucanaccess://"
-                + "E:/INULCELL.accdb;","", "");
-        System.out.println("Berhasil Konek");
-        
-        stmt = connection.createStatement();
-        rsUser = stmt.executeQuery("SELECT * FROM LogIn");
-        
-        
-        
-        while(rsUser.next()==true)
-        {
-            list.add(new LogInDB(rsUser.getString("Username"),
-                    rsUser.getString("Password")));
-
-        }
-        
-        
-        } catch (SQLException errMsg)
-        {
-            System.out.println("Ada Kesalahan" + errMsg.getMessage());
-        }    
+        control=new LogIn();
         initComponents();
     }
 
     
-    public void loginActionPerformed() {
-        
-    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,29 +146,21 @@ public class LogInUI extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
-        String sql = "SELECT * FROM LogIn WHERE Username=? AND Password=?";
-        
-        try{
-            pst=connection.prepareStatement(sql);
-            pst.setString(1, txtUsername.getText());
-            pst.setString(2, txtPassword.getText());
+            String user=txtUsername.getText();
+            String password=txtPassword.getText();
             
-            rsUser=pst.executeQuery();
-            
-        if(rsUser.next()){
-            JOptionPane.showMessageDialog(null, "Username atau Password benar", "Success", JOptionPane.INFORMATION_MESSAGE);
-            MenuAwal m = new MenuAwal();
-            m.setVisible(true);
-            m.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Log In", JOptionPane.ERROR_MESSAGE);
-        }
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Username atau Password salah", "Failed to Log In", JOptionPane.ERROR_MESSAGE);
-        }
         
+            boolean test=control.login(user, password);
+            
+            if(test){
+                    Menu=new MenuAwal();
+                    Menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    Menu.setVisible(true);
+                    dispose();
+            }
+            else{
+                 JOptionPane.showMessageDialog(null,"User atau Password salah", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -257,8 +214,5 @@ public class LogInUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-    private void close() {
-        WindowEvent winClosing = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosing);
-    }
+    
 }

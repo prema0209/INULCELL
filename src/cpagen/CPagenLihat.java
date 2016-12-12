@@ -26,19 +26,17 @@ public class CPagenLihat extends javax.swing.JFrame {
     private int index;
     private String[] title = {"ID", "Nama", "NoHp"};
     Object data[][];
- //   private int indexAwal;
- //   private int indexAkhir;
+ 
     
     /**
      * Creates new form CPAgenLihat
      */
     public CPagenLihat() {
         initComponents();
-        //control = new CpControl();
+      
         index=0;
-        data=new Object[35][3];
-  //      this.indexAwal = 1;
-  //      this.indexAkhir = 5;
+        data=new Object[15][3];
+        
     }
 
     public void updateTable(){
@@ -213,14 +211,14 @@ public class CPagenLihat extends javax.swing.JFrame {
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         control=new CpControl();
-        index=index+35;
+        index=index+15;
         updateTable();
     }//GEN-LAST:event_nextActionPerformed
 
     private void prevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevActionPerformed
-        control=new CpControl();
-      if(index-35>0){  
-      index=index-35;
+       control=new CpControl();
+      if(index-15>0){  
+      index=index-15;
         
       updateTable();
       }

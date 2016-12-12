@@ -25,17 +25,19 @@ public class LogDataBase {
     Connection connection;
     Statement stmt;
     ResultSet saldo;
+    boolean connect;
     
     
     public LogDataBase(){
        
         connection=null;
+        connect=false;
         
         
     }
     
     
-    public void connectDB(){
+    public boolean connectDB(){
         try {
             connection=DriverManager.getConnection("jdbc:ucanaccess://"
                     +"E:/INULCELL.accdb;","","");
@@ -44,9 +46,10 @@ public class LogDataBase {
             stmt= connection.createStatement();
             
             
-            
+            return true;
         } catch (SQLException errMsg) {
            System.out.println("ada kesalahan : "+ errMsg.getMessage());
+           return false;
         }
     }
     
@@ -86,56 +89,60 @@ public class LogDataBase {
     
     public boolean tambahLog(String sql){
         
-        connectDB();
+        connect=connectDB();
         
-        try{
-           int berhasil=stmt.executeUpdate(sql);
-            
-            return true;
-           
+        if(connect){
+            try{
+               int berhasil=stmt.executeUpdate(sql);
+
+                return true;
+
+            }
+            catch (SQLException errMsg) {
+               System.out.println("ada kesalahan : "+ errMsg.getMessage());
+
+            return false;
+            }
         }
-        catch (SQLException errMsg) {
-           System.out.println("ada kesalahan : "+ errMsg.getMessage());
-           
-        return false;
-        }
-        
+        else return false;
         
         
         
     }
     
     public Object[][] LihatLog(int index){
-        connectDB();
+        
+        connect=connectDB();
+        
         Object[][] data = new Object[15][5];
         
-        
-        try {
-            ResultSet rsLogTransaksi=stmt.executeQuery("SELECT * from LogTransaksi");
-            for(int i=0;i<index-15;i++) rsLogTransaksi.next();
-            
-             
-            for(int i=0;i<15;i++){
-               
-                
-               
-                    if( rsLogTransaksi.next()){
-                    data[i][0]=rsLogTransaksi.getString("ID");
-                    data[i][1]=rsLogTransaksi.getString("tanggal");
-                    data[i][2]=rsLogTransaksi.getString("NoHp");
-                    data[i][3]=rsLogTransaksi.getString("provider");
-                    data[i][4]=rsLogTransaksi.getString("nominal");
-                    }
-                    else break;
+        if(connect){
+            try {
+                ResultSet rsLogTransaksi=stmt.executeQuery("SELECT * from LogTransaksi");
+                for(int i=0;i<index-15;i++) rsLogTransaksi.next();
+
+
+                for(int i=0;i<15;i++){
+
+
+
+                        if( rsLogTransaksi.next()){
+                        data[i][0]=rsLogTransaksi.getString("ID");
+                        data[i][1]=rsLogTransaksi.getString("tanggal");
+                        data[i][2]=rsLogTransaksi.getString("NoHp");
+                        data[i][3]=rsLogTransaksi.getString("provider");
+                        data[i][4]=rsLogTransaksi.getString("nominal");
+                        }
+                        else break;
+                }
+
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-         
+        
                  
          
          
@@ -143,18 +150,21 @@ public class LogDataBase {
     }
     
     public boolean hapusLog(String sql) {
-        connectDB();
+        connect=connectDB();
         
-        try{
-           int berhasil=stmt.executeUpdate(sql);
-            
-            return true;
-           
+        if(connect){
+            try{
+               int berhasil=stmt.executeUpdate(sql);
+
+                return true;
+
+            }
+            catch (SQLException errMsg) {
+               System.out.println("ada kesalahan : "+ errMsg.getMessage());
+
+            return false;
+            }
         }
-        catch (SQLException errMsg) {
-           System.out.println("ada kesalahan : "+ errMsg.getMessage());
-           
-        return false;
-        }
+        else return false;
     }
 }

@@ -23,69 +23,75 @@ public class SaldoDB {
     Connection connection;
     Statement stmt;
     ResultSet saldo;
+ 
     
     public SaldoDB(){
         connection=null;
+        
     }
     
-    public void connectDB(){
+    public boolean connectDB(){
         try {
             connection=DriverManager.getConnection("jdbc:ucanaccess://"
                     +"E:/INULCELL.accdb;","","");
             
             
             stmt= connection.createStatement();
-            
+            return true;
             
             
         } catch (SQLException errMsg) {
            System.out.println("ada kesalahan : "+ errMsg.getMessage());
+           return false;
         }
     }
     
     public boolean tambahDb(String sql){
         
-        connectDB();
+        boolean connect=connectDB();
         
-        try{
-           int berhasil=stmt.executeUpdate(sql);
-            
-            return true;
-           
-        }
-        catch (SQLException errMsg) {
-           System.out.println("ada kesalahan : "+ errMsg.getMessage());
-           
-        return false;
-        }
+        if(connect){
         
+            try{
+               int berhasil=stmt.executeUpdate(sql);
+
+                return true;
+
+            }
+            catch (SQLException errMsg) {
+               System.out.println("ada kesalahan : "+ errMsg.getMessage());
+
+            return false;
+            }
+        }
+        else return false;
         
         
         
     }
     
     public String LihatSaldo(){
-        connectDB();
+      boolean connect=connectDB();
         String saldo="";
         
-        
-        try {
-            
-            
-                    ResultSet rsLogTransaksi=stmt.executeQuery("SELECT * from saldo");
-            
-               
-                    rsLogTransaksi.next();
-                    saldo=rsLogTransaksi.getString("saldo");
-                 
+        if(connect){
+            try {
+
+
+                        ResultSet rsLogTransaksi=stmt.executeQuery("SELECT * from saldo");
+
+
+                        rsLogTransaksi.next();
+                        saldo=rsLogTransaksi.getString("saldo");
+
+                }
+
+
+
+            catch (SQLException ex) {
+                Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
-           
-        catch (SQLException ex) {
-            Logger.getLogger(LogDataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
          
                  
          

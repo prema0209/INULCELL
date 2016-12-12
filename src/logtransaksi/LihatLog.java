@@ -27,9 +27,10 @@ public class LihatLog extends javax.swing.JFrame {
     
     public LihatLog() {
         initComponents();
+        control = new ControlLog();
         index=0;
         data=new Object[15][5];
-        
+        updateTable();
         
     }
     
@@ -107,7 +108,15 @@ public class LihatLog extends javax.swing.JFrame {
             new String [] {
                 "ID", "Tanggal", "No. HP", "Provider", "Nominal"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelLog.setToolTipText("");
         tabelLog.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(tabelLog);

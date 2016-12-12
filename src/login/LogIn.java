@@ -5,26 +5,61 @@
  */
 
 package login;
-import menuawal.MenuAwal;
+
 
 
 public class LogIn {
     
     private LogInDB data;
-  //  private boolean hasil;
-    private MenuAwal menu;
+  
     
     public LogIn(){
         data = new LogInDB();
-        menu = new MenuAwal();
+   
     }
     
-    public void newUser(String user, String pass){
-        data.setUser(user);
-        data.setPass(pass);
+    public boolean newUser(String user, String pass){
+        String Us=data.ambilData("Select username from login","username");
+        String pa=data.ambilData("Select password from login","password");
+        
+        boolean User=data.gantiData("Update Login set username='"+user+"'");
+        boolean Pass=false;
+        
+        
+        if(User){
+            
+            Pass=data.gantiData("Update Login set password='"+pass+"'");
+        }
+        else{
+            return false;
+            
+        }
+        
+        if(Pass){
+            
+            return true;
+        }
+        else{
+            data.gantiData("Update Login set username='"+Us+"'");
+            return false;
+        }
+           
+        
     }
     
     public boolean login(String user, String password){
-        return data.CekUserPass(user, password);
+        
+       
+            String User=data.ambilData("Select username from login","username");
+            String Password=data.ambilData("Select password from login","password");
+        
+            
+            
+        if((User.equals(user)) && (Password.equals(password)))
+            return true;
+        else return false;
+        
+        
+        
     }
 }

@@ -28,7 +28,7 @@ public class RekapDB {
         
     }
     
-    public void connectDB(){
+    public boolean connectDB(){
          try {
             connection=DriverManager.getConnection("jdbc:ucanaccess://"
                     +"E:/INULCELL.accdb;","","");
@@ -36,33 +36,37 @@ public class RekapDB {
             
             stmt= connection.createStatement();
             
-            
+            return true;
             
         } catch (SQLException errMsg) {
            System.out.println("ada kesalahan : "+ errMsg.getMessage());
+           return false;
         }
     }
     
     public String ambilData(String sql){
-        connectDB();
+        boolean connect=connectDB();
                 
-        try {
-            
-            data=stmt.executeQuery(sql);
-            
-         
-            data.next();
-            String a=data.getString("data");
-            
-            
-            return a;
-            
-        } 
-           catch (SQLException errMsg) {
-           System.out.println("ada kesalahan : "+ errMsg.getMessage());
-           
-             return "";
-        
-                }
+        if(connect){
+            try {
+
+                data=stmt.executeQuery(sql);
+
+
+                data.next();
+                String a=data.getString("data");
+
+
+                return a;
+
+            } 
+               catch (SQLException errMsg) {
+               System.out.println("ada kesalahan : "+ errMsg.getMessage());
+
+                 return "";
+
+                    }
+        }
+        return"";
     }
 }

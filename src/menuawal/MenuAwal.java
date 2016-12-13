@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import login.GantiPassword;
-import login.LogInUI;
+import fppbo.LogInUI;
 import logtransaksi.LogTransaksi;
 import rekapdata.RekapDataPenjualanUI;
 import saldo.MenuSaldo;
